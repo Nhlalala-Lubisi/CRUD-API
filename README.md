@@ -23,7 +23,7 @@ uvicorn main:app --reload --port 8000
 ```
 
 The server starts on **http://localhost:8000**. Interactive Swagger docs are automatically
-available at **http://localhost:8000/docs** (FastAPI generates these for free — no extra setup).
+available at **http://localhost:8000/docs** (FastAPI generates these for free, no extra setup).
 
 ## Endpoints
 
