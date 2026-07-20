@@ -10,17 +10,26 @@ That's intentional at this stage; a real database comes in Week 3.
 
 Requires Python 3.10+.
 
+**macOS / Linux (bash):**
 ```bash
-# 1. Clone this repo, then from inside the project folder:
 python3 -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-
-# 2. Install dependencies
+source .venv/bin/activate
 pip install -r requirements.txt
-
-# 3. Run the server
 uvicorn main:app --reload --port 8000
 ```
+
+**Windows (PowerShell):**
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python -m uvicorn main:app --reload --port 8000
+```
+> If `Activate.ps1` is blocked by execution policy, run this once:
+> `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`
+>
+> Always confirm the venv is active (prompt shows `(.venv)`) before installing
+> packages land in your global/user site-packages and `uvicorn` won't be on PATH.
 
 The server starts on **http://localhost:8000**. Interactive Swagger docs are automatically
 available at **http://localhost:8000/docs** (FastAPI generates these for free, no extra setup).
@@ -112,7 +121,7 @@ the full CRUD cycle (create → list → get → update → delete) without curl
 Create a few tasks, restart the server, then `GET /tasks` again.
 
 > **TODO:** write 2 sentences here about what you observed and why (this is the exact
-> observation that motivates Week 3's database lesson and everything in memory disappears
+> observation that motivates Week 3's database lesson, and everything in memory disappears
 > the moment the process stops).
 
 ## Stage 7: AI vs me (bonus, optional)
