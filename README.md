@@ -112,7 +112,7 @@ the full CRUD cycle (create → list → get → update → delete) without curl
 Create a few tasks, restart the server, then `GET /tasks` again.
 
 > **TODO:** write 2 sentences here about what you observed and why (this is the exact
-> observation that motivates Week 3's database lesson — everything in memory disappears
+> observation that motivates Week 3's database lesson and everything in memory disappears
 > the moment the process stops).
 
 ## Stage 7 — AI vs me (bonus, optional)
