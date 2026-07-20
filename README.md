@@ -1,7 +1,7 @@
 # Task API
 
 A small in-memory CRUD API for managing a to-do list, built with **Python + FastAPI**
-for the FlyRank Internship — Backend Track, Week 2, Assignment A1.
+for the FlyRank Internship Backend Track, Week 2, Assignment A1.
 
 Data lives only in memory (a Python list) and it resets whenever the server restarts.
 That's intentional at this stage; a real database comes in Week 3.
