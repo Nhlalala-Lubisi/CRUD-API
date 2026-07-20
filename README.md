@@ -115,7 +115,7 @@ Create a few tasks, restart the server, then `GET /tasks` again.
 > observation that motivates Week 3's database lesson and everything in memory disappears
 > the moment the process stops).
 
-## Stage 7 — AI vs me (bonus, optional)
+## Stage 7: AI vs me (bonus, optional)
 
 > **TODO if you attempt Stage 7:** put your own hand-written prompt here, generate the
 > AI's version into `ai-version/`, run your Stage 4 checkpoint curls against it, diff the
