@@ -4,7 +4,7 @@ A small in-memory CRUD API for managing a to-do list, built with **Python + Fast
 for the FlyRank Internship Backend Track, Week 2.
 
 Data lives only in memory (a Python list) and it resets whenever the server restarts.
-That's intentional at this stage; a real database comes in Week 3.
+That's intentional at this stage, a real database comes in Week 3.
 
 ## How to install & run
 
