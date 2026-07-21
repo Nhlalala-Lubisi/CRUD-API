@@ -1,8 +1,6 @@
 """
 Task API — a small CRUD API for managing a to-do list.
 
-FlyRank Internship · Backend Track · W2 · A1
-
 Storage is in-memory only: data resets whenever the server restarts.
 That is a deliberate lesson for this stage, not a bug (see README).
 """
@@ -21,9 +19,7 @@ app = FastAPI(
     description="A small in-memory CRUD API for managing a to-do list.",
 )
 
-# ---------------------------------------------------------------------------
 # In-memory "database"
-# ---------------------------------------------------------------------------
 
 tasks: List[dict] = []
 next_id: int = 1
@@ -42,10 +38,7 @@ def seed_tasks() -> None:
 
 seed_tasks()
 
-
-# ---------------------------------------------------------------------------
 # Request/response models
-# ---------------------------------------------------------------------------
 
 class Task(BaseModel):
     id: int
@@ -61,11 +54,8 @@ class TaskUpdate(BaseModel):
     title: Optional[str] = None
     done: Optional[bool] = None
 
-
-# ---------------------------------------------------------------------------
 # Make validation errors return 400, not FastAPI's default 422.
 # The assignment spec calls for 400 on any invalid/missing body.
-# ---------------------------------------------------------------------------
 
 @app.exception_handler(RequestValidationError)
 async def validation_error_handler(request: Request, exc: RequestValidationError):
@@ -74,10 +64,7 @@ async def validation_error_handler(request: Request, exc: RequestValidationError
         content={"error": "Invalid request body"},
     )
 
-
-# ---------------------------------------------------------------------------
-# Stage 1 — root & health
-# ---------------------------------------------------------------------------
+# Stage 1: root & health
 
 @app.get("/", summary="API description", tags=["meta"])
 def read_root():
@@ -90,10 +77,7 @@ def health_check():
     """Return a simple liveness signal — the same check real services use."""
     return {"status": "ok"}
 
-
-# ---------------------------------------------------------------------------
-# Stage 2 — read
-# ---------------------------------------------------------------------------
+# Stage 2: read
 
 @app.get("/tasks", summary="List tasks (with optional filter/search/pagination)", tags=["tasks"])
 def list_tasks(
@@ -135,10 +119,7 @@ def get_task(task_id: int):
             return task
     raise HTTPException(status_code=404, detail=f"Task {task_id} not found")
 
-
-# ---------------------------------------------------------------------------
-# Stage 3 — create
-# ---------------------------------------------------------------------------
+# Stage 3: create
 
 @app.post("/tasks", status_code=201, summary="Create a task", tags=["tasks"])
 def create_task(payload: TaskCreate):
@@ -153,10 +134,7 @@ def create_task(payload: TaskCreate):
     next_id += 1
     return task
 
-
-# ---------------------------------------------------------------------------
-# Stage 4 — update & delete
-# ---------------------------------------------------------------------------
+# Stage 4: update & delete
 
 @app.put("/tasks/{task_id}", summary="Update a task", tags=["tasks"])
 def update_task(task_id: int, payload: TaskUpdate):
@@ -188,9 +166,7 @@ def delete_task(task_id: int):
     raise HTTPException(status_code=404, detail=f"Task {task_id} not found")
 
 
-# ---------------------------------------------------------------------------
-# Extras — stats and reset (optional stretch)
-# ---------------------------------------------------------------------------
+# Extras: stats and reset (optional stretch)
 
 @app.get("/stats", summary="Task stats", tags=["extras"])
 def get_stats():
