@@ -1,5 +1,5 @@
 """
-Task API — a small CRUD API for managing a to-do list.
+Task API - a small CRUD API for managing a to-do list.
 
 Storage is in-memory only: data resets whenever the server restarts.
 That is a deliberate lesson for this stage, not a bug (see README).
